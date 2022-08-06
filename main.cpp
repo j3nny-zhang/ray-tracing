@@ -18,9 +18,10 @@ double hit_sphere(const point3& center, double radius, const ray& r) {
     }
 }
 
-colour ray_colour(const ray& r) {
+colour ray_colour(const ray& r) { // remember that the colour type is just a vector
     auto t = hit_sphere(point3(0,0,-1), 0.5, r);
     if (t > 0.0) {
+        // N is unit vector [-1,1] -> map each component to [0,1] and map x/y/z to r/g/b
         vec3 N = unit_vector(r.at(t) - vec3(0,0,-1));
         return 0.5*colour(N.x()+1, N.y()+1, N.z()+1);
     }
