@@ -6,7 +6,13 @@
 #include <memory>
 #include <vector>
 
+//  is a pointer to some allocated type, with reference-counting semantics. New pointer incremements counter
+//  when pointer goes out of scope, the counter is decremented
+//  object is deleted when counter goes to 0
 using std::shared_ptr;
+//  allocates a new instance and returns a shared pointer 
+// ex: shared_ptr<sphere> sphere_ptr = make_shared<sphere>(point3(0,0,0), 1.0);
+// or express it more simply with auto: auto sphere_ptr = make_shared<sphere>(point3(0,0,0), 1.0);
 using std::make_shared;
 
 class hittable_list : public hittable {
